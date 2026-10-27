@@ -1,0 +1,10 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Koppelcode</title>
+<style>body{font-family:-apple-system,Helvetica,sans-serif;background:#0f1115;color:#eee;margin:0;padding:28px 18px;text-align:center}h1{font-size:20px;margin:18px 0 6px}p{color:#aaa;font-size:14px}code{display:block;word-break:break-all;white-space:pre-wrap;background:#1c2030;border-radius:12px;padding:16px;font-size:15px;margin:16px 0;text-align:left}button{font-size:18px;padding:16px 22px;border:0;border-radius:14px;background:#b4f05a;color:#111;font-weight:700;width:100%}.ok{color:#b4f05a;font-weight:700;margin-top:12px}.err{color:#f66}</style></head><body>
+<h1>Koppeling gelukt</h1><p>Dit is de eenmalige code. Kopieer hem en plak hem bij Claude.</p>
+<code id="c">…</code><button id="b">Kopieer code</button><div id="m"></div>
+<script>
+const q=new URLSearchParams(location.search);const code=q.get('code');const st=q.get('state')||'';
+const el=document.getElementById('c'),m=document.getElementById('m');
+if(code){el.textContent=code+(st?'\nstate='+st:'');}else{el.textContent='Geen code gevonden. Probeer de koppeling opnieuw.';el.className='err';document.getElementById('b').style.display='none';}
+document.getElementById('b').onclick=async()=>{try{await navigator.clipboard.writeText(el.textContent);m.textContent='Gekopieerd. Plak hem nu bij Claude.';m.className='ok';}catch(e){m.textContent='Kopiëren lukte niet. Houd je vinger op de code en kies Kopieer.';m.className='err';}};
+</script></body></html>
